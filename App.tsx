@@ -16,10 +16,10 @@ import {
   LearnMoreLinks,
   ReloadInstructions,a
 } from 'react-native/Libraries/NewAppScreen';
-import ListProduct2 from "./src/screen/listProduct2";
+import ListProduct from "./src/screen/listProduct";
 const App = () => {
   return (
-    <ListProduct2></ListProduct2>
+    <ListProduct></ListProduct>
   );
 };
 

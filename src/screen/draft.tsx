@@ -10,10 +10,8 @@ import {
   Text,
   useColorScheme,
   View,
-  Alert,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+  Alert, Button, TouchableOpacity
+} from "react-native";
 
 import {
   Colors,
@@ -27,17 +25,16 @@ import {
 const DATA = [
   {
     id: '1',
-    title:
-      'LAPTOP ACER NITRO 5 AN515-56-79U2 GTX 1650 4GB INTEL CORE I7 11370H 8GB 512GB 15.6 FHD IPS 144HZ MULTICOLOR WIN 10\n',
+    title: 'LAPTOP ACER NITRO 5 AN515-56-79U2 GTX 1650 4GB INTEL CORE I7 11370H 8GB 512GB 15.6 FHD IPS 144HZ MULTICOLOR WIN 10\n',
     price: '24.490.000₫',
-    img: 'https://xgear.vn/wp-content/uploads/2021/04/an515-56-05-568x568.jpg',
+    img:
+      'https://xgear.vn/wp-content/uploads/2021/04/an515-56-05-568x568.jpg',
   },
   {
     id: '2',
     title: 'Màn hình cong Samsung LC49J890 49″ DFHD 144Hz USB-C',
     price: '21.490.000₫',
-    img:
-      'https://xgear.vn/wp-content/uploads/2018/04/vn-curved-gaming-c49j890dke-lc49j890dkexxv-frontblack-95180924_compressed-568x568.jpg',
+    img: 'https://xgear.vn/wp-content/uploads/2018/04/vn-curved-gaming-c49j890dke-lc49j890dkexxv-frontblack-95180924_compressed-568x568.jpg',
   },
   {
     id: '3',
@@ -50,42 +47,41 @@ const DATA = [
     id: '4',
     title: 'Màn Hình ASUS VG248QG 24″ FullHD 165Hz 0.5ms G-sync Compatible',
     price: '5.890.000₫',
-    img:
-      'https://xgear.vn/wp-content/uploads/2019/08/VG258QR_thumb_b_compressed.jpg',
+    img: 'https://xgear.vn/wp-content/uploads/2019/08/VG258QR_thumb_b_compressed.jpg',
   },
   {
     id: '5',
     title: 'Màn hình Samsung LF24T350FHEXXV 24″ IPS 75Hz Full viền',
     price: '3.290.000₫',
-    img:
-      'https://xgear.vn/wp-content/uploads/2020/08/LF27T350_compressed-568x568.jpg',
+    img: 'https://xgear.vn/wp-content/uploads/2020/08/LF27T350_compressed-568x568.jpg',
   },
   {
     id: '6',
-    title: 'Màn hình cong Samsung LC24RG50FQEXXV 24″ FHD 144Hz Freesync',
+    title:
+      'Màn hình cong Samsung LC24RG50FQEXXV 24″ FHD 144Hz Freesync',
     price: '4.590.000₫',
     img:
       'https://xgear.vn/wp-content/uploads/2019/07/LC24RG50_1_compressed-1-568x568.jpg',
   },
 ];
 
+const showInformationOfItem = ({title, price, img}) =>
+  Alert.alert(
+    "Thong tin",
+    {title} ,
+    [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel"
+      },
+      { text: "OK", onPress: () => console.log("OK Pressed") }
+    ]
+  );
 
 
 const Item = ({title, price, img}) => (
-  <TouchableOpacity onPress={
-    () => Alert.alert(
-      title,
-      price,
-      [
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
-          style: 'cancel',
-        },
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
-      ],
-    )
-  }>
+  <TouchableOpacity onPress={showInformationOfItem}>
     <View style={styles.itemContainer}>
       <Image source={{uri: img}} style={styles.imgContainer} />
       <View style={styles.titleContainer}>
@@ -100,12 +96,15 @@ const Item = ({title, price, img}) => (
   </TouchableOpacity>
 );
 
-const renderItem = ({item}) => (
-  <Item title={item.title} price={item.price} img={item.img} />
-);
+
 
 const {width, height} = Dimensions.get('window');
 const ListProduct2 = () => {
+
+
+  const renderItem = ({item}) => (
+    <Item title={item.title} price={item.price} img={item.img} />
+  );
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
@@ -147,7 +146,7 @@ const styles = StyleSheet.create({
     //backgroundColor: 'green',
     height: '20%',
     width: '85%',
-    marginVertical: 8,
+    marginVertical:8,
   },
   priceContainer: {
     //backgroundColor: 'pink',

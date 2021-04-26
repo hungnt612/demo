@@ -42,7 +42,7 @@ const DATA = [
   {
     id: '3',
     title: 'Màn hình cong Cooler Master GM27-CF 27″ VA 165Hz FullHD',
-    price: '5.490.000₫',
+    price: '5.490.000₫ ',
     img:
       'https://xgear.vn/wp-content/uploads/2020/03/GM27-CF_1_compressed-568x568.jpg',
   },

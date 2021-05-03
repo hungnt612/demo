@@ -23,6 +23,9 @@ import {
   ReloadInstructions,
   a,
 } from 'react-native/Libraries/NewAppScreen';
+import _ from 'lodash';
+import { shuffle } from "lodash";
+
 
 const DATA = [
   {
@@ -106,11 +109,12 @@ const renderItem = ({item}) => (
 
 const {width, height} = Dimensions.get('window');
 const ListProduct = () => {
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
         <FlatList
-          data={DATA}
+          data={shuffle([DATA])}
           renderItem={renderItem}
           keyExtractor={item => item.id}
           numColumns={2}

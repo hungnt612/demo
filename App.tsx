@@ -17,10 +17,13 @@ import {
   ReloadInstructions,a
 } from 'react-native/Libraries/NewAppScreen';
 import ListProduct from "./src/screen/listProduct";
+import flexBox from "./src/screen/flexBox";
+import FlexBox from "./src/img/flexBox";
+import NhapSDT from "./src/screen/nhapSDT";
 const App = () => {
   return (
     <ListProduct></ListProduct>
-  );
+    );
 };
 
 const styles = StyleSheet.create({

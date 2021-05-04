@@ -27,10 +27,11 @@
    ReloadInstructions,
  } from 'react-native/Libraries/NewAppScreen';
 import ListProduct from "./app/screen/list_products";
-
+import SearchBar from "./app/compoments/SearchBar";
  const App = () => {
    return (
      <SafeAreaView style={styles.container}>
+       <SearchBar></SearchBar>
        <ListProduct></ListProduct>
      </SafeAreaView>
    );

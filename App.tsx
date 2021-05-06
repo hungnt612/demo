@@ -31,7 +31,8 @@ import SearchBar from "./app/compoments/SearchBar";
  const App = () => {
    return (
      <SafeAreaView style={styles.container}>
-       <SearchBar></SearchBar>
+       <SearchBar>
+       </SearchBar>
        <ListProduct></ListProduct>
      </SafeAreaView>
    );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Dimensions,
   SafeAreaView,
@@ -12,10 +12,13 @@ import {
 
 const {width, height} = Dimensions.get('window');
 const SearchBar = () => {
+  const [state, setState] = useState('');
+  console.log(state)
   return (
     <SafeAreaView style={styles.container}>
       <TextInput style={styles.searchbar}
                  placeholder="Type Here..."
+                 onChangeText={(state) => setState(state)}
       >
       </TextInput>
     </SafeAreaView>
@@ -26,13 +29,13 @@ const styles = StyleSheet.create({
   container:{
     marginVertical:5,
     marginHorizontal:18,
-    backgroundColor:'red',
+    // backgroundColor:'red',
 
   },
   searchbar:{
     borderRadius:8,
     borderColor:'gray',
-    borderWidth: 2,
+    borderWidth: 1,
     height: height * 0.04,
   },
 });

@@ -31,7 +31,7 @@ import ListProduct from "./app/screen/list_products";
  const App = () => {
    return (
      <SafeAreaView style={styles.container}>
-       <ListProduct></ListProduct>
+       
      </SafeAreaView>
    );
  };

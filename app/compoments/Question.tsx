@@ -23,27 +23,25 @@ const renderLabel = (label, style) => {
     </View>
   )
 }
+
 const Question = () => {
   const [isSelected, setSelection] = useState(false);
   console.log(isSelected)
-
-
   return (
     <View style={styles.container}>
         <View style={styles.contentContainer}>
           <View style={styles.question}>
             <Text>skdgfilsfgusygfusydgfsuydgfusydgfusdygfusyd
-              fsdiugfsudyfgsuydgfusydgfusydgfsudygfusydgfsuydfgusd
+              fsdiugfsudyfgsuydgfusydgfusydgfsudygfusydgfsuydfgusddfihgiduf
+              dfghdifghidfjhgidufhgidjfghuid
+              dfohgdifhg
             </Text>
             <View style={styles.answer}>
               <SelectMultiple
-                items={fruits}
                 renderLabel={renderLabel}
+                items={fruits}
                 selectedItems={isSelected}
                 onSelectionsChange={setSelection} />
-              <Text>
-                Con gaf
-              </Text>
             </View>
           </View>
         </View>

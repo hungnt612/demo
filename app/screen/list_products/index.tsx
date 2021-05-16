@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   Dimensions,
   FlatList,
@@ -14,6 +16,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
+import Profile from "../Profile";
 
 const DATA = [
   {
@@ -94,10 +97,17 @@ const Item = ({title, price, img}) => (
 const renderItem = ({item}) => (
   <Item title={item.title} price={item.price} img={item.img} />
 );
-
+const Tab = createBottomTabNavigator();
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Explorer" component={ListProduct} />
+      <Tab.Screen name="Profile" component={Profile} />
+    </Tab.Navigator>
+  );
+}
 const {width, height} = Dimensions.get('window');
-const ListProduct = () => {
-
+const ListProduct: React.FC<{navigation}> =({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
@@ -108,6 +118,7 @@ const ListProduct = () => {
           numColumns={2}
         />
       </View>
+
     </SafeAreaView>
   );
 };

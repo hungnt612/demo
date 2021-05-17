@@ -7,9 +7,10 @@ import {DataContext} from "../../App";
 const Login: React.FC<{navigation}> =({navigation}) => {
   const context=useContext(DataContext);
   const {userID}=context;
+  const {dataUser}=userID;
   const [ID=userID,setID]=useState('')
   const {setUserID}=context;
-  console.log(userID)
+  console.log(dataUser)
   return (
     <View style={styles.container}>
       <Text style={styles.customInputTitle}>Email ID</Text>
@@ -30,7 +31,7 @@ const Login: React.FC<{navigation}> =({navigation}) => {
           <Text style={styles.txtUnder}>For got password ?</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Explorer',{setUserID: userID})}
+        onPress={() => navigation.navigate('Explorer',{setID: userID})}
         style={{
           height: 60,
           borderRadius: 10,

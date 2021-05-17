@@ -68,9 +68,17 @@ const Stack = createStackNavigator();
        >
        <NavigationContainer>
          <Stack.Navigator>
-           <Stack.Screen name="Login" component={Login} />
-           <Stack.Screen name="Explorer" component={Explorer} />
-           <Stack.Screen name="Profile" component={Profile} />
+
+           {userID=='admin' ? (
+             <>
+               <Stack.Screen name="Explorer" component={Explorer} />
+               <Stack.Screen name="Profile" component={Profile} />
+             </>
+           ) : <>
+             <Stack.Screen name="Login" component={Login} />
+           </>}
+
+
          </Stack.Navigator>
        </NavigationContainer>
        </DataContext.Provider>

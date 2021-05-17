@@ -1,7 +1,15 @@
-import React from "react";
+import React, {useState, useContext} from 'react';
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import {DataContext} from "../../App";
 
 const Login: React.FC<{navigation}> =({navigation}) => {
+  const context=useContext(DataContext);
+  const {userID}=context;
+  const [ID=userID,setID]=useState('')
+  const {setUserID}=context;
+  console.log(userID)
   return (
     <View style={styles.container}>
       <Text style={styles.customInputTitle}>Email ID</Text>
@@ -9,6 +17,7 @@ const Login: React.FC<{navigation}> =({navigation}) => {
         style={styles.customInput}
         placeholder="Enter your email here"
         autoCorrect={false}
+        onChangeText={(ID)=>setUserID(ID)}
       />
       <Text style={styles.customInputTitle}>Password</Text>
       <TextInput
@@ -21,7 +30,7 @@ const Login: React.FC<{navigation}> =({navigation}) => {
           <Text style={styles.txtUnder}>For got password ?</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Explorer')}
+        onPress={() => navigation.navigate('Explorer',{setUserID: userID})}
         style={{
           height: 60,
           borderRadius: 10,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {createContext, useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
@@ -27,6 +27,14 @@ import Login from "./app/screen/Login";
 import Profile from "./app/screen/Profile";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+const initialValue = {
+  dataUser:[],
+};
+
+export const DataContext = createContext({
+  userID:{},
+  setUserID:(data: any)=>{},
+})
 
 function HomeScreen({ navigation }) {
   return (
@@ -49,9 +57,15 @@ function Explorer() {
   );
 }
 const Stack = createStackNavigator();
+
  const App = () => {
+   const [userID,setUserID]=useState(initialValue);
+   console.log(userID)
    return (
      <SafeAreaView style={styles.container}>
+       <DataContext.Provider
+       value={{userID,setUserID}}
+       >
        <NavigationContainer>
          <Stack.Navigator>
            <Stack.Screen name="Login" component={Login} />
@@ -59,6 +73,7 @@ const Stack = createStackNavigator();
            <Stack.Screen name="Profile" component={Profile} />
          </Stack.Navigator>
        </NavigationContainer>
+       </DataContext.Provider>
      </SafeAreaView>
    );
  };

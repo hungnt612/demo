@@ -1,4 +1,4 @@
-import React, {createContext, useState} from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
@@ -26,62 +26,27 @@ import Quiz from "./app/screen/Quiz";
 import Login from "./app/screen/Login";
 import Profile from "./app/screen/Profile";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import AppNavigation from "./app/screen/AppNavigation";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SurveyContext } from "./app/screen/context/SurveyContext";
 
-const initialValue = {
-  dataUser:[],
-};
-
-export const DataContext = createContext({
-  userID:{},
-  setUserID:(data: any)=>{},
-})
-
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Start"
-        onPress={() => navigation.navigate('Login')}
-      />
-    </View>
-  );
-}
-const Tab = createBottomTabNavigator();
-function Explorer() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Profile" component={Profile} />
-    </Tab.Navigator>
-  );
-}
 const Stack = createStackNavigator();
 
  const App = () => {
-   const [userID,setUserID]=useState(initialValue);
-   console.log(userID)
+  const survey=useContext(SurveyContext);
+  console.log(survey)
+  useEffect(()=>{
+    AsyncStorage.getItem('answers').then((value => {
+      console.log('value:' + value);
+      survey.setAnswers({
+        answers:value,
+      });
+    }))
+  },[]);
+
    return (
      <SafeAreaView style={styles.container}>
-       <DataContext.Provider
-       value={{userID,setUserID}}
-       >
-       <NavigationContainer>
-         <Stack.Navigator>
-
-           {userID=='admin' ? (
-             <>
-               <Stack.Screen name="Explorer" component={Explorer} />
-               <Stack.Screen name="Profile" component={Profile} />
-             </>
-           ) : <>
-             <Stack.Screen name="Login" component={Login} />
-           </>}
-
-
-         </Stack.Navigator>
-       </NavigationContainer>
-       </DataContext.Provider>
+       <AppNavigation></AppNavigation>
      </SafeAreaView>
    );
  };
